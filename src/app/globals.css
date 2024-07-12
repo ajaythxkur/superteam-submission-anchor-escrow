@@ -1,0 +1,58 @@
+:root{
+  --white: #FFFFFF;
+  --black: #000000;
+  --dark-gray: #272727;
+  --purple: #512da8;
+  --cyan: #00ffbd;
+  --light-white: #cdc9c9;
+}
+body {
+  color: var(--white) !important;
+  background: var(--black) !important;
+}
+
+.refund-info-box{
+  background-color: var(--dark-gray);
+}
+
+.text-cyan{
+  color: var(--cyan);
+}
+
+.bg-cyan{
+  background-color: var(--cyan);
+}
+
+.text-purple{
+  color: var(--purple);
+}
+
+.bg-purple{
+  background-color: var(--purple);
+}
+
+.text-dark-gray{
+  color: var(--dark-gray);
+}
+
+.bg-dark-gray{
+  background-color: var(--dark-gray);
+}
+
+.form-control{
+  background-color: transparent !important;
+  color: var(--white) !important;
+  box-shadow: unset !important;
+  outline: none !important;
+}
+.form-control::placeholder{
+  background-color: transparent !important;
+  color: var(--light-white) !important;
+  box-shadow: unset !important;
+  outline: none !important;
+}
+.btn{
+  color: var(--white) !important;
+  background-color: var(--purple) !important;
+  border: none !important;
+}
