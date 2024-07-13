@@ -15,7 +15,8 @@ interface AppContextType {
     onRefund: (escrowString: string) => Promise<void>,
     escrows: any[],
     myEscrows: any[],
-    getEscrowOffers: () => Promise<void>
+    getEscrowOffers: () => Promise<void>,
+    loading: boolean
 }
 const AppContext = createContext<AppContextType | undefined>(undefined);
 const balanceLimitCheck = async(connection: web3.Connection, ata: web3.PublicKey, minBalance: number) => {
@@ -37,7 +38,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const associatedTokenProgram = ASSOCIATED_TOKEN_PROGRAM_ID;
     const [escrows, setEscrows] = useState<any[]>([]);
     const [myEscrows, setMyEscrows] = useState<any[]>([]);
-
+    const [loading, setLoading] = useState(false)
     const program = useMemo(() => {
         if (connection && wallet) {
             return getProgram(connection, wallet);
@@ -118,6 +119,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
             return;
         }
         try {
+            setLoading(true)
             const escrowAccounts = await program.account.escrow.all();
             const readableAccounts = await Promise.all(escrowAccounts.map(async(escrow)=>{
                 const xMintInfo = devnetMints.find(token => token.mint === escrow.account.mintA.toBase58());
@@ -148,6 +150,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
             setEscrows(otherEscrows);
         } catch (err) {
             console.error(err)
+        } finally{
+            setLoading(false)
         }
     }, [program, wallet, connection, tokenProgram])
     useEffect(() => {
@@ -274,7 +278,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
             onRefund: refund,
             escrows,
             myEscrows,
-            getEscrowOffers
+            getEscrowOffers,
+            loading
         }}>
             {children}
         </AppContext.Provider>

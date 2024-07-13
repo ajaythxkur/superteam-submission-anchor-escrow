@@ -4,10 +4,12 @@ import { useEscrow } from "@/context/AppProvider";
 import { shortenAddress } from "@/utils/shortenAddress";
 import React, { useState } from "react";
 import { NoDataFound } from "../NoDataFound";
+import { Loading } from "../Loading";
 
 export function Take() {
-    const { escrows, onTake, getEscrowOffers } = useEscrow()
+    const { escrows, onTake, getEscrowOffers, loading } = useEscrow()
     const [transactionInProgress, setTransactionInProgress] = useState(false)
+    if(loading) return <Loading />;
     if (escrows.length === 0) return <NoDataFound />;
     const handleTake = async (escrow: string) => {
         try {

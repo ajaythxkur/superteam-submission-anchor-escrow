@@ -8,4 +8,4 @@ export const devnetMints = [
         mint: "HAiY8MYpZzRgZfMmzpGdDqyMiX8UWAVU1NqZyd6s7KzH"
     }
 ]
-export const PROJECT_GITHUB_LINK = "";
+export const PROJECT_GITHUB_LINK = "https://github.com/ajaythxkur/talent-escrow";
