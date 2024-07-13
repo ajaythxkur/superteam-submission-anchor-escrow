@@ -1,5 +1,5 @@
 import { ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions"
-import { clusterApiUrl, Connection, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
+import { clusterApiUrl, Connection, PublicKey, Transaction } from "@solana/web3.js";
 export async function GET(request: Request){
     const response: ActionGetResponse = {
         icon: "https://pbs.twimg.com/profile_images/1472933274209107976/6u-LQfjG_400x400.jpg",
