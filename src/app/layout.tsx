@@ -15,7 +15,7 @@ const localFontStyle = localFont({
 const _font = Poppins({ subsets: ["latin"], weight: "400" })
 
 export const metadata: Metadata = {
-  title: "Escrow UI + Blink",
+  title: "Escrow",
   description: "escrow-ui-blink-st-talent-olympics",
 };
 
